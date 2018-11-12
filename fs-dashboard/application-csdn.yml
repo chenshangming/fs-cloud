@@ -6,11 +6,11 @@ server:
 turbine:
   aggregator:
     clusterConfig: default
-  appConfig: sc-consumer
+  appConfig: fs-consumer
   clusterNameExpression: "'default'"
 spring:
   application:
-    name: sc-dashboard
+    name: fs-dashboard
 #management:
 #  endpoints:
 #    web:
