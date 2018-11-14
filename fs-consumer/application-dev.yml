@@ -12,12 +12,12 @@ spring:
             percentage: 1.0
     zipkin:
         base-url: http://localhost:9411
-ribbon:
-    ConnectTimeout: 15000
-    ReadTimeout: 30000
 feign:
     hystrix:
         enabled: true
+ribbon:
+    ConnectTimeout: 15000
+    ReadTimeout: 30000
 hystrix:
     command:
         default:
