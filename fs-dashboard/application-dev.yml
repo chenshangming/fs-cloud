@@ -1,13 +1,5 @@
 server:
     port: 8900
-spring:
-    cloud:
-        consul:
-            discovery:
-                instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
-                ip-address: true
-            host: localhost
-            port: 8500
 turbine:
     aggregator:
         clusterConfig: default

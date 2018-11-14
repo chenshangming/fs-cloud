@@ -1,13 +1,6 @@
 server:
     port: 8101
 spring:
-    cloud:
-        consul:
-            discovery:
-                instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
-                ip-address: true
-            host: localhost
-            port: 8500
     sleuth:
         sampler:
             percentage: 1.0
