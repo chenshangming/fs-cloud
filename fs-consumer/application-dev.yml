@@ -1,17 +1,23 @@
 server:
     port: 8200
 spring:
+    consul:
+        discovery:
+            instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+            ip-address: true
+        host: localhost
+        port: 8500
     sleuth:
         sampler:
             percentage: 1.0
     zipkin:
         base-url: http://localhost:9411
+ribbon:
+    ConnectTimeout: 15000
+    ReadTimeout: 30000
 feign:
     hystrix:
         enabled: true
-ribbon:
-    ConnectTimeout: 15000
-    ReadTimeout: 30000          
 hystrix:
     command:
         default:
@@ -19,15 +25,8 @@ hystrix:
                 isolation:
                     thread:
                         timeoutInMilliseconds: 100000
-logging:
-    level:
-        com:
-            yasaka:
-                stock:
-                    feign:
-                        MFeignClient: debug      
 management:
     endpoints:
         web:
             exposure:
-                include: '*'        
+                include: '*'
