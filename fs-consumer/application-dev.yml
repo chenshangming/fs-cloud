@@ -1,20 +1,33 @@
-# hystrix.command.default.execution.timeout.enabled: false
-#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 80000
 server:
-  port: 8200
-logging:
-  level:
-    com.yasaka.stock.feign.MFeignClient: debug
+    port: 8200
+spring:
+    sleuth:
+        sampler:
+            percentage: 1.0
+    zipkin:
+        base-url: http://localhost:9411
 feign:
-  hystrix:
-    enabled: true
+    hystrix:
+        enabled: true
 ribbon:
-  ReadTimeout:  30000
-  ConnectTimeout:  15000
+    ConnectTimeout: 15000
+    ReadTimeout: 30000          
 hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 100000
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 100000
+logging:
+    level:
+        com:
+            yasaka:
+                stock:
+                    feign:
+                        MFeignClient: debug      
+management:
+    endpoints:
+        web:
+            exposure:
+                include: '*'        
